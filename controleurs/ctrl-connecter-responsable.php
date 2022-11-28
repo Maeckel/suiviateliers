@@ -16,7 +16,7 @@
 		header( "Location: /suivateliers/ateliers" ) ;
 	}
 	else {
-		$erreur = 'Nom de connexion ou mot de passe incorrect.' ;
+		$erreur = 'Identifiant de connexion ou mot de passe incorrect.' ;
 		require "vues/vue-connexion.php" ;
 	}
 
