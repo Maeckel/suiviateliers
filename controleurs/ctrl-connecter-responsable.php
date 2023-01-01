@@ -1,13 +1,17 @@
 <?php
 
 	$login = $_POST[ "login" ] ;
-	$mdp = $_POST[ "mdp" ] ;
+	$md2 = md5($_POST[ "mdp" ]) ;
+	$mdp = substr($md2,0,-2);
 	
 	require "modeles/ModeleSuivAteliers.php" ;
 	$responsable = ModeleSuivAteliers::getResponsable( $login , $mdp ) ;
 	
 	if( $responsable !== FALSE ){
 		session_start() ;
+
+		password_hash( $login , PASSWORD_DEFAULT);
+		password_hash( $mdp , PASSWORD_DEFAULT);
 		
 		$_SESSION[ "numero" ] = $responsable[ "numero" ] ;
 		$_SESSION[ "nom" ] = $responsable[ "nom" ] ; 
